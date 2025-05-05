@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "dILjAzX0VHzCB9/ED5HqKJaWzwZjBG3mKGHjJXr/LgQ=",
+  "Source": "Dunnhumby.RestApi",
+  "BasePath": "_content/Dunnhumby.RestApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
