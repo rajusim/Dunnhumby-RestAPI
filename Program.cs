@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 var connectionString = builder.Configuration.GetConnectionString("ProductDb");
 Console.WriteLine($"Using connection string: {connectionString}");
 
@@ -22,7 +23,20 @@ builder.Services.AddDbContext<ProductDBContext>(options =>
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // Replace with your React app's URL
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+// Use CORS
+app.UseCors("AllowReactApp");
 
 var dataFolder = Path.Combine(Directory.GetCurrentDirectory(), "Data");
 Directory.CreateDirectory(dataFolder);
